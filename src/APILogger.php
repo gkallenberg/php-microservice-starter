@@ -18,27 +18,19 @@ class APILogger
      */
     public static function getLogger()
     {
-        if (!self::$logger) {
-            self::initializeLogger();
-        }
-
         return self::$logger;
     }
 
-    public static function initializeLogger()
+    /**
+     * @param SlackHandler $logger
+     */
+    public static function initializeLogger(SlackHandler $logger)
     {
         $log = new Logger('API');
 
         //$log->pushHandler(new StreamHandler('error.log', Logger::DEBUG));
 
-        $log->pushHandler(new SlackHandler(
-            Config::SLACK_TOKEN,
-            Config::SLACK_CHANNEL,
-            Config::SLACK_USERNAME,
-            true,
-            null,
-            Logger::DEBUG
-        ));
+        $log->pushHandler($logger);
 
         self::setLogger($log);
     }

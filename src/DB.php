@@ -1,7 +1,6 @@
 <?php
 namespace NYPL\Starter;
 
-use NYPL\Services\Config;
 use Slim\PDO\Database;
 
 class DB
@@ -11,11 +10,9 @@ class DB
      */
     public static $database;
 
-    protected static function initializeDatabase()
+    public static function initializeDatabase(Database $db)
     {
-        self::setDatabase(
-            new Database(Config::DB_CONNECT_STRING, Config::DB_USERNAME, Config::DB_PASSWORD)
-        );
+        self::setDatabase($db);
     }
 
     /**
@@ -23,10 +20,6 @@ class DB
      */
     public static function getDatabase()
     {
-        if (!self::$database) {
-            self::initializeDatabase();
-        }
-
         return self::$database;
     }
 

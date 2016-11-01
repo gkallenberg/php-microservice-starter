@@ -2,7 +2,7 @@
 namespace NYPL\Starter\Model\ModelTrait;
 
 use NYPL\Starter\AvroLoader;
-use NYPL\Services\Config;
+use NYPL\Starter\MessageHandler;
 use NYPL\Starter\Model\Message;
 use NYPL\Starter\Model\ModelInterface\MessageInterface;
 
@@ -15,7 +15,7 @@ trait MessageTrait
     {
         $producer = new \RdKafka\Producer();
         $producer->setLogLevel(LOG_DEBUG);
-        $producer->addBrokers(Config::MESSAGE_BROKER);
+        $producer->addBrokers(MessageHandler::getBroker());
 
         /**
          * @var \RdKafka\ProducerTopic $topic

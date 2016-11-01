@@ -1,0 +1,28 @@
+application:
+  identity_header:    "X-NYPL-Identity"
+
+services:
+  db:
+    connect_string: "pgsql:host=<host>;dbname=<dbname>"
+    username:       ""
+    password:       ""
+
+  message:
+    broker:         ""
+
+  logger:
+    token:          ""
+    channel:        ""
+    username:       ""
+
+  oauth:
+    client_id:      ""
+    client_secret:  ""
+    redirect_uri:   "oauth"
+    authorize_uri:  "https://nypl-sierra-test.iii.com/iii/sierra-api/authorize"
+    token_uri:      "https://nypl-sierra-test.iii.com/iii/sierra-api/token"
+    user_info_uri:  null
+    time_zone:      "America/Los_Angeles"
+
+  sierra:
+    api_url:        "https://nypl-sierra-test.iii.com/iii/sierra-api/v3"
