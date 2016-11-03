@@ -161,11 +161,11 @@ abstract class Controller
     /**
      * @return bool
      */
-    public function initializeIdentity()
+    public function initializeIdentity($identity)
     {
-        if ($this->getRequest()->hasHeader(Config::IDENTITY_HEADER)) {
+        if ($this->getRequest()->hasHeader($identity)) {
             $this->setIdentity(new Identity(
-                $this->getRequest()->getHeaderLine(Config::IDENTITY_HEADER)
+                $this->getRequest()->getHeaderLine($identity)
             ));
             return true;
         }

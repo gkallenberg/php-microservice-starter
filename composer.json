@@ -15,7 +15,8 @@
     "monolog/monolog": "1.21.0",
     "danielstjules/stringy": "2.3.2",
     "zircote/swagger-php": "2.0.7",
-    "hassanKhan/config": "0.10.0"
+    "hassanKhan/config": "0.10.0",
+    "incenteev/composer-parameter-handler": "~2.0"
   },
   "require-dev": {
   },
