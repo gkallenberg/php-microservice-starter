@@ -5,6 +5,6 @@ class Config
 {
     public static function load()
     {
-        return \Noodlehaus\Config::load(__DIR__ . '/app/config/config.yml');
+        return \Noodlehaus\Config::load(__DIR__ . '/../app/config/parameters.yml');
     }
 }

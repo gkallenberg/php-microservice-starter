@@ -4,7 +4,7 @@ namespace NYPL\Starter;
 use Monolog\Handler\SlackHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use NYPL\Services\Config;
+use NYPL\Starter\Config;
 
 class APILogger
 {
@@ -12,6 +12,11 @@ class APILogger
      * @var Logger
      */
     public static $logger;
+
+    /**
+     * @var SlackHandler
+     */
+    public static $logHandler;
 
     /**
      * @return Logger
@@ -22,15 +27,15 @@ class APILogger
     }
 
     /**
-     * @param SlackHandler $logger
+     * @param SlackHandler $logHandler
      */
-    public static function initializeLogger(SlackHandler $logger)
+    public static function initializeLogger(SlackHandler $logHandler)
     {
         $log = new Logger('API');
 
         //$log->pushHandler(new StreamHandler('error.log', Logger::DEBUG));
 
-        $log->pushHandler($logger);
+        $log->pushHandler($logHandler);
 
         self::setLogger($log);
     }

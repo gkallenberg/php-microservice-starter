@@ -1,9 +1,10 @@
 <?php
 namespace NYPL\Starter\Model\ModelTrait;
 
-use NYPL\Services\Config;
+use NYPL\Starter\Config;
 use NYPL\Starter\DB;
 use NYPL\Starter\Model;
+use NYPL\Starter\SierraHandler;
 
 trait SierraTrait
 {
@@ -47,7 +48,7 @@ trait SierraTrait
 
         $headers[] = 'Authorization: Bearer ' . $this->getAccessToken();
 
-        curl_setopt($curl, CURLOPT_URL, Config::BASE_SIERRA_API_URL . '/' . $path);
+        curl_setopt($curl, CURLOPT_URL, SierraHandler::getBaseUrl() . '/' . $path);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -98,9 +99,9 @@ trait SierraTrait
     {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, Config::OAUTH_TOKEN_URI);
+        curl_setopt($curl, CURLOPT_URL, SierraHandler::getBaseUrl());
         curl_setopt($curl, CURLOPT_POSTFIELDS, ["grant_type" => "client_credentials"]);
-        curl_setopt($curl, CURLOPT_USERPWD, Config::OAUTH_CLIENT_ID . ":" . Config::OAUTH_CLIENT_SECRET);
+        curl_setopt($curl, CURLOPT_USERPWD, SierraHandler::getClientId() . ":" . SierraHandler::getClientSecret());
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         $tokenJson = curl_exec($curl);
