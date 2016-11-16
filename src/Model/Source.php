@@ -7,7 +7,7 @@ use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 
 class Source extends Model
 {
-    use TranslateTrait, DBCreateTrait;
+    use DBCreateTrait;
 
     public $id = '';
 
