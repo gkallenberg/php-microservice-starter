@@ -11,8 +11,6 @@ class Source extends Model
 
     public $id = '';
 
-    public $sourceCode = '';
-
     public $sourceId = '';
 
     /**
@@ -51,24 +49,7 @@ class Source extends Model
      */
     public function translateId($id = '')
     {
-        $this->setSourceCode('s');
         $this->setSourceId($id);
-    }
-
-    /**
-     * @return string
-     */
-    public function getSourceCode()
-    {
-        return $this->sourceCode;
-    }
-
-    /**
-     * @param string $sourceCode
-     */
-    public function setSourceCode($sourceCode)
-    {
-        $this->sourceCode = $sourceCode;
     }
 
     /**

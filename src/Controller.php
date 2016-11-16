@@ -183,10 +183,10 @@ abstract class Controller
     protected function generateId(Source $source)
     {
         if ($source->getSourceId()) {
-            return $source->getSourceCode() . $source->getSourceId();
+            return $source->getSourceId();
         }
 
-        return $source->getSourceCode() . $source->getId();
+        return $source->getId();
     }
 
     /**
